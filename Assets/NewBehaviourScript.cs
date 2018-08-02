@@ -13,7 +13,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        backbuffer = new byte[64];
+        backbuffer = new byte[ysize*xsize*3];
         tex = new Texture2D(xsize, ysize, TextureFormat.RGB24, false);
         tex.filterMode = FilterMode.Point;
         quadRenderer.material.mainTexture = tex;
@@ -23,12 +23,10 @@ public class NewBehaviourScript : MonoBehaviour
 
 
     void setPixel(int x, int y, byte R, byte G, byte B)
-    {
-        backbuffer[x * y] = R;
-        backbuffer[x + 1] = G;
-        backbuffer[x + 2] = B;
-
-
+    { 
+        backbuffer[(y * xsize * 3) + x * 3] = R;
+        backbuffer[(y*xsize*3)+3*x+1] = G;
+        backbuffer[(y * xsize * 3) + 3 * x + 2] = B;
 
     }
 
