@@ -10,6 +10,10 @@ public class NewBehaviourScript : MonoBehaviour
     public byte[] backbuffer;
     public int xsize;
     public int ysize;
+    public Vector2Int coordinates;
+    public byte colourR;
+    public byte colourG;
+    public byte colourB;
     // Use this for initialization
     void Start()
     {
@@ -17,7 +21,7 @@ public class NewBehaviourScript : MonoBehaviour
         tex = new Texture2D(xsize, ysize, TextureFormat.RGB24, false);
         tex.filterMode = FilterMode.Point;
         quadRenderer.material.mainTexture = tex;
-
+        
 
     }
 
@@ -33,11 +37,10 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        setPixel(9, 0, 255, 0, 255);
-        setPixel(3, 2, 255, 255, 255);
-        setPixel(6, 0, 0, 0, 255);
+       
+        setPixel(coordinates.x, coordinates.y, colourR, colourG, colourB);
+  //      setPixel(3, 2, 255, 255, 255)
+    //    setPixel(6, 0, 0, 0, 255);
 
 
         //  backbuffer[0] = 255;
