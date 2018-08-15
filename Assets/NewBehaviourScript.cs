@@ -46,8 +46,10 @@ public class NewBehaviourScript : MonoBehaviour
 
     void setPixel(int x, int y, byte R, byte G, byte B)
     {
+        //this checks if the pixels would be outside of the bounds
         if (x < xsize && y < ysize && x >= 0 && y >= 0)
         {
+            //if they aren't, feel free to draw them
             backbuffer[(y * xsize * 3) + x * 3] = R;
             backbuffer[(y * xsize * 3) + 3 * x + 1] = G;
             backbuffer[(y * xsize * 3) + 3 * x + 2] = B;
@@ -74,7 +76,7 @@ public class NewBehaviourScript : MonoBehaviour
 
             item.Update();
 
-            setPixel((int)(item.starPosition.x / (item.starPosition.z * FoV) + offsetX), (int)(item.starPosition.y / (item.starPosition.z * FoV)+ offsetY), (byte)(colourR * (100 - item.starPosition.z/100f)), (byte)(colourG*(100-item.starPosition.z/100f)), (byte)(colourB* (100 - item.starPosition.z/100f)));
+            setPixel((int)(item.starPosition.x / (item.starPosition.z * FoV) + offsetX), (int)(item.starPosition.y / (item.starPosition.z * FoV)+ offsetY), (byte)(colourR - ((item.starPosition.z/100) * colourR)), (byte)(colourG - ((item.starPosition.z / 100) * colourG)), (byte)(colourB - ((item.starPosition.z / 100)) * colourB));
       
         }
 
